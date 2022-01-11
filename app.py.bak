@@ -26,7 +26,7 @@ async def main():
         if message.media != None:
             attacPath = './'+str(message.id)+'.png'
             msg = msg + '|' + attacPath
-            await client.download_media(message.media,"./"++".png")
+            await client.download_media(message.media,attacPath)
         f.write(msg+'\n')
     
     f.close();

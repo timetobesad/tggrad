@@ -1,8 +1,4 @@
-import codecs
-import json
 from telethon import TelegramClient
-
-from json import dumps as json_dumps
 
 chat = 'me'
 api_id = '17504125'
