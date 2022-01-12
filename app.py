@@ -10,19 +10,24 @@ async def main():
     
     f = open('debug.txt', 'a', encoding='utf-8')
     
-    for message in await client.get_messages('satisface', limit=50):
+    for message in await client.get_messages('satisface', limit=100):
     
         if message.from_id == None:
             fromUser = 'satisface'
         else:
             fromUser = 'sam.cpp'
-    
-        msg = fromUser + '|' + message.text
+            
+        if type(message.text) == str:
+            text = message.text
+        else:
+            text = ' '
+            
+        msg = fromUser + '|' + text
         
         if message.media != None:
             attacPath = './'+str(message.id)+'.png'
             msg = msg + '|' + attacPath
-            await client.download_media(message.media,attacPath)
+            #await client.download_media(message.media,attacPath)
         f.write(msg+'\n')
     
     f.close();
