@@ -1,4 +1,6 @@
-i = 1
+test = dict()
 
-for i in range(4):
-	print(i)
+for i in range(5):
+    test[i] = i;
+    
+print(test)

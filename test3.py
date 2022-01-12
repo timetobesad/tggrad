@@ -15,12 +15,10 @@ client = TelegramClient('anon', api_id, api_hash)
 
 async def main():
     
-        tmpMsg = await client.get_messages(chat, limit=1)
-        #print(tmpMsg[0].date)
-        dateMsg = str(tmpMsg[0].date)[:-6]
-        dateObj = datetime.strptime(dateMsg, '%Y-%m-%d %H:%M:%S') + timedelta(hours=2)
-        
-        print(str(dateObj))
+    async for dialog in client.iter_dialogs():
+        print(json.load(str(dialog))
+        #if(dialog.bot_info_version == None)
+        #    print(dialog)
         
 with client:
     client.loop.run_until_complete(main())

@@ -1,2 +1,6 @@
-for i in range(4):
-	print(i)
+test = dict()
+
+for i in range(5):
+    test[] = i;
+    
+print(test)
