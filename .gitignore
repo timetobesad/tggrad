@@ -1,4 +1,4 @@
-debug.txt
+*.txt
 *.bak
 test.py
 test2.py
