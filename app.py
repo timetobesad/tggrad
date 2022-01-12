@@ -38,7 +38,7 @@ async def downloadDialog(dialogId, title):
             dateObj = datetime.strptime(dateMsg, '%Y-%m-%d %H:%M:%S') + timedelta(hours=2)
                 
             if type(message.text) == str:
-                text = message.text
+                text = (message.text).replace('\n', '(!)')
             else:
                 text = ' '
                 
@@ -47,7 +47,7 @@ async def downloadDialog(dialogId, title):
             if message.media != None:
                 attacPath = './img/'+str(message.id)+'.png'
                 msg = msg + '|' + attacPath
-                #await client.download_media(message.media,attacPath)
+                await client.download_media(message.media,attacPath)
             f.write(msg+'\n')
             
         f.close()
