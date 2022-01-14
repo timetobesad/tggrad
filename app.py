@@ -20,6 +20,9 @@ def isDialog(dialog):
 async def downloadDialog(dialogId, title):
     for i in range(10):
     
+        if title == 'samcpp':
+            return
+        
         fileName = 'chats/'+title+'_'+str(i)+'.txt'
         f = open(fileName, 'a', encoding='utf-8')
         
@@ -48,6 +51,8 @@ async def downloadDialog(dialogId, title):
                 attacPath = './img/'+str(message.id)+'.png'
                 msg = msg + '|' + attacPath
                 await client.download_media(message.media,attacPath)
+                
+            msg = msg + '$'
             f.write(msg+'\n')
             
         f.close()
@@ -62,7 +67,7 @@ async def main():
     async for dialog in client.iter_dialogs():
         if isDialog(dialog):
            title = re.sub(r"[^a-zA-Zа-яА-Я]+", "", dialog.name);
-           fileListDialog.write(title+'\n')
+           fileListDialog.write(title+'$')
            await downloadDialog(dialog.id, title)
 
     fileListDialog.close();
